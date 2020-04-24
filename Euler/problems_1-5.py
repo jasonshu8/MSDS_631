@@ -1,4 +1,4 @@
-import calculations_helpers as cs
+import Lib.calculations_helpers as cs
 
 #problem 2
 print(cs.find_sum_even_fibonacci_numbers(4000000))

@@ -1,4 +1,4 @@
-#problem 2
+# problem 2
 def find_sum_even_fibonacci_numbers(max_num):
     fibonacci_list = [1, 2]
     i = 0
@@ -22,20 +22,23 @@ def find_sum_even_fibonacci_numbers(max_num):
     return fibonacci_sum
 
 
-
-#problem 3
+# problem 3
 def calculate_max_prime_factor(n):
-    import math
+    prime_factors = []
+    while n % 2 == 0:
+        prime_factors.append(2)
+        n = n / 2
     for i in range(3, int(math.sqrt(n)) + 1, 2):
         while n % i == 0:
-            max_prime_factor = i
+            prime_factors.append(i)
             n = n / i
+    if n > 2:
+        prime_factors.append(n)
 
-    return int(max_prime_factor)
+    return max(prime_factors)
 
 
-
-#problem 4
+# problem 4
 def is_palindrome(n):
     num_chars = [int(d) for d in str(n)]
     num_chars_reversed = num_chars[::-1]
@@ -43,30 +46,30 @@ def is_palindrome(n):
 
     return result
 
+
 def find_largest_palindrome_product(max_number_digits):
     palindrome_array = []
     start_array = []
     for i in range(max_number_digits):
         start_array.append("9")
         start_int = int(''.join(start_array))
-     
+
     max_option = start_int * start_int
     if is_palindrome(max_option):
         palindrome_array.append(max_option)
     else:
         for i in range(start_int):
             for j in range(start_int - 1):
-                current_option = i*j
+                current_option = i * j
                 if is_palindrome(current_option):
                     palindrome_array.append(current_option)
                 else:
                     pass
-    palindrome = max(palindrome_array)    
+    palindrome = max(palindrome_array)
     return palindrome
 
 
-
-#problem 5
+# problem 5
 def divisor_list_trimmer(start, end):
     unique_divisor_master = list(range(end, start, -1))
     for i in range(end, start, -1):
@@ -79,6 +82,7 @@ def divisor_list_trimmer(start, end):
 
     return unique_divisor_master
 
+
 def modulo_0_iterator(num, iteration_seq):
     for i in iteration_seq:
         if num % i == 0:
@@ -87,6 +91,7 @@ def modulo_0_iterator(num, iteration_seq):
             return False
 
     return True
+
 
 def find_smallest_multiple(start, end):
     iteration_seq = divisor_list_trimmer(start, end)
@@ -99,10 +104,10 @@ def find_smallest_multiple(start, end):
     return i
 
 
-#problem 6
-def calculate_sum_square_difference(start,end):
+# problem 6
+def calculate_sum_square_difference(start, end):
     import numpy as np
-    numbers = list(range(start,end+1))
+    numbers = list(range(start, end + 1))
     numbers_squared = np.square(numbers)
     sum_of_squares = sum(numbers_squared)
     square_of_sums = np.square(sum(numbers))
@@ -111,8 +116,7 @@ def calculate_sum_square_difference(start,end):
     return result
 
 
-
-#problem 7
+# problem 7
 def is_prime(num):
     divisor_options = range(2, int(num ** .5) + 1)
     for i in divisor_options:
@@ -140,8 +144,7 @@ def find_nth_prime(n):
     return nth_prime
 
 
-
-#problem 8
+# problem 8
 def find_largest_product_in_series(series, char_count):
     import numpy as np
     num = series
@@ -161,8 +164,7 @@ def find_largest_product_in_series(series, char_count):
     return prod
 
 
-
-#problem 9
+# problem 9
 def find_pythagorean_triplet_product(n):
     import numpy as np
     triplet_list = []
@@ -179,9 +181,8 @@ def find_pythagorean_triplet_product(n):
     return triplet_prod
 
 
-
-#problem 10
-#this calls a previously defined function: is_prime
+# problem 10
+# this calls a previously defined function: is_prime
 def find_sum_of_primes_below(n):
     prime_list = []
     for i in range(2, n + 1):
@@ -195,8 +196,7 @@ def find_sum_of_primes_below(n):
     return result
 
 
-
-#problem 11
+# problem 11
 def find_largest_product_in_grid(adjacents, grid_rows, grid_columns, grid_text):
     import numpy as np
     array = np.array([int(x) for x in grid_text.split()]).reshape(grid_rows, grid_columns)
